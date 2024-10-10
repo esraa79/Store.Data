@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Store.Service.HandleResponses;
 using Store.Web.Extentions;
 using StackExchange.Redis;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace Store.Web
 {
     public class Program
@@ -28,6 +29,10 @@ namespace Store.Web
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddDbContext<IdentityDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"),b=>b.MigrationsAssembly("Store.Data"));
+            });
 
             builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
             {
@@ -36,6 +41,7 @@ namespace Store.Web
             });
 
             builder.Services.AddApplicationServices();
+            builder.Services.AddIdentityServices();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -53,6 +59,7 @@ namespace Store.Web
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
 

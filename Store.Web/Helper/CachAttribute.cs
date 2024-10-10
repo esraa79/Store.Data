@@ -19,7 +19,7 @@ namespace Store.Web.Helper
             var _cachservice = context.HttpContext.RequestServices.GetRequiredService<ICachService>();
             var cachkey  = GetCacheKeyFromRequest(context.HttpContext.Request);
             var cachResponse = await _cachservice.GetCachResponseAsync(cachkey);
-            if(string.IsNullOrEmpty(cachResponse))
+            if(!string.IsNullOrEmpty(cachResponse))
             {
                 var contentResult = new ContentResult
                 {

@@ -1,12 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Store.Data;
 using Store.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Store.Repository
 {
@@ -43,6 +38,15 @@ namespace Store.Repository
                     var products = JsonSerializer.Deserialize<List<Product>>(prodData);
                     if (products != null)
                         await context.Products.AddRangeAsync(products);
+                }
+                if (context.DeliveryMethods != null && !context.DeliveryMethods.Any())
+                {
+                    //Presist Data to db
+
+                    var DelData = File.ReadAllText("../Store.Repository/SeedData/delivery.json");
+                    var DELMethods = JsonSerializer.Deserialize<List<DeliveryMethod>>(DelData);
+                    if (DELMethods != null)
+                        await context.DeliveryMethods.AddRangeAsync(DELMethods);
                 }
 
                 await context.SaveChangesAsync();
