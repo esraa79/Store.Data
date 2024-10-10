@@ -22,12 +22,11 @@ namespace Store.Repository
                     Address = new Address
                     {
                         FirstName = "Esraa",
-                        LastName = "Atef",
-
+                        LastName = "Atef",                        
                         City = "Jeddah",
                         Street = "Watan",
-
-                        PostalCode = "1234",
+                        PostalCode = "1234"                     
+                        
 
                     }
                 };

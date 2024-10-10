@@ -11,6 +11,7 @@ namespace Store.Data.Entities.IdentityEntities
         public string City { get; set; }
         public string PostalCode { get; set; }
 
+
         [Required]
         public string AppUserId { get; set; }
 
