@@ -14,8 +14,8 @@ namespace Store.Web.Extentions
        
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration _config)
         {
-            var builder = services.AddIdentity<AppUser,IdentityRole> ();
-            builder = new IdentityBuilder(builder.UserType,typeof(IdentityRole),builder.Services);
+            var builder = services.AddIdentityCore<AppUser> ();
+            builder = new IdentityBuilder(builder.UserType,builder.Services);
             builder.AddEntityFrameworkStores<StoreIdentityContext>();
             
             builder.AddSignInManager<SignInManager<AppUser>>();
