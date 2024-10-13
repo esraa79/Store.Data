@@ -30,7 +30,7 @@ namespace Store.Repository
 
                     }
                 };
-                await userManager.CreateAsync(user, "PSW123!");
+                await userManager.CreateAsync(user, "Psw123!");
             }
             }
 

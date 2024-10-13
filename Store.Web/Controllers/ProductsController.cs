@@ -1,4 +1,5 @@
-﻿    using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Repository.Specification.ProductSpec;
 using Store.Service.Services.ProductServices;
@@ -7,9 +8,10 @@ using Store.Web.Helper;
 
 namespace Store.Web.Controllers
 {
-  
+    [Authorize]
     public class ProductsController : BaseController
     {
+
         private readonly IProductService _productService;
 
         public ProductsController(IProductService productService)
