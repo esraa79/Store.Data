@@ -5,7 +5,7 @@ namespace Store.Service.OrderService.Dtos
     public class OrderDetailsDto
     {
         public  Guid Id { get; set; }
-        public string BuyerId { get; set; }
+        public string BuyerEmail { get; set; }
         public DateTimeOffset  OrderDate { get; set; }
 
         public AddressDto ShippingAddress { get; set; }

@@ -20,7 +20,7 @@ namespace Store.Repository.Specification.OrderSpecs
 
         }
 
-        public OrderWithItemSpecification(Guid id)
+        public OrderWithItemSpecification(Guid id, string buyerEmail)
            : base(order => order.Id == id)
         {
             AddInclude(order => order.DeliveryMethod);

@@ -12,6 +12,7 @@ using Store.Service.TokenService;
 using Store.Service.UserService;
 using Store.Service.OrderService.Dtos;
 using Store.Service.OrderService;
+using Store.Service.PaymentService;
 
 namespace Store.Web.Extentions
 {
@@ -26,6 +27,7 @@ namespace Store.Web.Extentions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<IorderService, OrderService>();
             services.AddAutoMapper(typeof(ProductProfile));
             services.AddAutoMapper(typeof(BasketProfile));

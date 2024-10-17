@@ -12,7 +12,7 @@ namespace Store.Service.OrderService.Dtos
         public decimal Price { get; set; }
         public int Quantity { get; set; }
 
-        public ProductItem ItemOrdered { get; set; }
+        //public ProductItem ItemOrdered { get; set; }
         public int ItemOrderedId { get; set; }
         public string ProductName { get; set; }
         public string PictureUrl { get; set; }
